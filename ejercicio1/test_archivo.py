@@ -1,18 +1,17 @@
-from antlr4 import*
+from antlr4 import *
 from Expr import Expr
 import sys
-# Pobre ingeniero solo
-# leer archivos
-input_stream = FileStream("Prueba.txt")
 
-# Por terminal
+# leer archivo
+input_stream = FileStream(sys.argv[1])
+
 lexer = Expr(input_stream)
-
 tokens = CommonTokenStream(lexer)
 tokens.fill()
-print(tokens)
 
 for token in tokens.tokens:
+    if token.type == -1:  # EOF, se ignora
+        continue
     print("Texto :", token.text)
     print("Linea :", token.line)
     print("Columna :", token.column)
