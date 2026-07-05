@@ -7,12 +7,12 @@ class Main:
 
     def ejecutar(self):
         ruta = input("Escribe la ruta del archivo: ")
-        archivo = Archivo(ruta, extension_esperada=".java")
+        archivo = Archivo(ruta, extension_esperada=".sql")
         if not archivo.existe():
             print("El archivo no existe")
             return
         if not archivo.es_el_tipo_correcto():
-            print("El archivo debe ser .java")
+            print("El archivo debe ser .sql")
             return
         codigo = archivo.leer()
         archivo.imprimir_info()
